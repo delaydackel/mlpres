@@ -1,0 +1,187 @@
+﻿## Was wir machen
+Artificial neural networks
+
+* Begriffsklärung
+* Problemstellung
+* Entscheidungsfindung
+* Aufbau CNN
+* Lernen am Beispiel (MNIST dataset)
+* Überblick Anwendungen
+---
+## Was wir nicht machen
+
+![](HAL.png)<!-- .element height="20%" width="20%" -->
+![](terminator.jpg)<!-- .element height="35%" width="35%" -->
+![](droiden.jpg)<!-- .element height="35%" width="35%" -->
+<aside class="notes" data-markdown>
+	- "echte" KI
+	- Denkende Maschienen
+	- Weltherrschaft
+	# Abgrenzung
+	- von Algorithmen
+	- von broad band AI
+    </aside>
+---
+## Mathe
+* Vektor
+* Matrix
+* Dimensionalität
+* Funktion
+* Ableitung
+---
+## Eine Entscheidung muss getroffen werden
+Gehe ich auf das Konzert?
+* (1) Mag ich die Band?<!-- .element: class="fragment" -->
+* (2) Gehe ich allein?<!-- .element: class="fragment" -->
+* (3) Wie wird das Wetter?<!-- .element: class="fragment" -->
+---
+## Eine Entscheidung muss getroffen werden
+
+Konzertbesuch bei 3 oder mehr Punkten
+
+|Gewichtung|Bedingung (0/1)|Gesamt            |
+|-------------|--------------------------------------------|
+| 3     | 1              | 3
+| 1      |     1                  |1                     |
+| 2      |      0                |0                      |
+
+
+
+<aside class="notes" data-markdown>
+Gehe ich auf das Konzert?
+(1) Mag ich die Band?
+(2) Gehe ich allein?
+(3) Wie wird das Wetter?
+    </aside>
+---
+## Problem:
+* Tabelle kann sehr lang werden
+* d.h. sinnvolles Abbilden mit klassischen Algorithmen nur bei begrenzter Anzahl an Inputs möglich<!-- .element: class="fragment" -->
+* Was tun bei z.B. Bildern ( Länge x Breite x Farbtiefe)?<!-- .element: class="fragment" -->
+
+<aside class="notes" data-markdown>
+- vorstellen von Weight / Bias / Aktivierungsfunktion
+    </aside>
+---
+## Künstliches Neuron
+![](neuron.png)<!-- .element height="45%" width="45%" -->
+
+![](formel1.png)<!-- .element height="35%" width="35%" --><!-- .element: class="fragment" -->
+---
+## Küstliches Neuron
+* Inputs
+* Weight (Gewichtung für jeden Input)
+* Bias (Entscheidungskriterium: Ist das Ergebnis der Aktivierungsfunktion >/< diesem Wert?)
+* Aktivierungsfunktion (Summe der Inputs x Weights)
+---
+## Aktivierungsfunktion
+* y=(wx+b)
+
+![](step.png)
+
+![](formel1.png)<!-- .element height="35%" width="35%" --><!-- .element: class="fragment" -->
+---
+## Sigmoidfunktion
+* Bisher y(wx+b)
+
+![](step.png)![](sigmoid.png)<!-- .element: class="fragment" -->
+
+![](sigfkt.png)<!-- .element height="25%" width="25%" --><!-- .element: class="fragment" -->
+---
+## Sigmoidfunktion
+
+* liefert Werte zwischen 0 und 1
+* lässt sich leicht ableiten
+* relativ "geschmeidig"
+-> kleine Änderungen an W/B eines Neurons erzeugen kleine Änderungen am output 
+---
+## MNIST dataset
+(Modified National Institute of Standards and Technology database)
+![](MnistExamples.png)<!-- .element height="50%" width="50%" -->
+
+---
+## MNIST dataset
+
+* 60,000 training images and 10,000 testing images<!-- .element: class="fragment" -->
+* 28x28 Pixel<!-- .element: class="fragment" -->
+* 8 bit Farbtiefe -> 256 Graustufen<!-- .element: class="fragment" -->
+* Beste Fehlerqote 0,23%<!-- .element: class="fragment" -->
+
+![](mnist_really_bad_images.png)<!-- .element height="30%" width="30%" --><!-- .element: class="fragment" -->
+
+* "Hello World" des machine learning<!-- .element: class="fragment" -->
+---
+## Vom Neuron zum Netz
+![](deepnn.png)<!-- .element height="35%" width="35%" -->
+
+Aus dem Nichts?
+* zufällig initialisiert<!-- .element: class="fragment" -->
+* trainiert<!-- .element: class="fragment" -->
+---
+## Kosten
+![](costfkt.png)<!-- .element height="25%" width="25%" -->
+
+* Quadratische Kostenfunktion
+* Wird genau dann klein, wenn y(x) = a
+
+<aside class="notes" data-markdown>
+- x ist input
+- a ist output(Activation)
+- n Gesamtanzahl der inputs
+    </aside>	
+---
+![](valley_with_ball.png)<!-- .element height="50%" width="50%" -->
+
+---
+## SGD
+Stochastic gradient descent
+
+* Wie ändern sich v1/v2 wenn wir nach unten gehen?
+
+![](sgd1.png)<!-- .element height="20%" width="20%" --><!-- .element: class="fragment" -->
+
+* Allgemein: 
+
+![](sgd2.png)<!-- .element height="20%" width="20%" --><!-- .element: class="fragment" -->
+
+<aside class="notes" data-markdown>
+- "was passiert, wenn wir in v1/v2 richtung bewegen?"
+- "Die änderung der Kosten ist ungefähr gleich der Ableitung der Kosten x der "Richtung" V
+-  Δv≡(Δv1,Δv2)T
+- ∇C≡(∂C∂v1,∂C∂v2)T.
+    </aside>
+---
+
+## SGD
+![](gradient-descent.png)<!-- .element height="50%" width="50%" -->
+
+---
+## Backpropagation
+
+![](backdrop1.png)<!-- .element height="35%" width="35%" -->
+
+
+* Zurückrechnen des Fehlers im Output-Layer<!-- .element: class="fragment" -->
+* Fehler pro Neuron im vorherigen Layer ist anteilig bestimmt durch dessen Gewichtung<!-- .element: class="fragment" -->
+---
+Beispiele
+
+[KI-Assistent für Programmierer verhindert Bugs, bevor sie eingecheckt werden](http://www.wired.co.uk/article/ubisoft-commit-assist-ai)
+
+[Face ID](https://www.heise.de/mac-and-i/meldung/iPhone-X-Geschwister-ueberlisten-Face-ID-3880389.html)
+
+[The Case for Learned Index Structures](https://www.arxiv-vanity.com/papers/1712.01208/)
+
+[Deepfakes1](deepfakes2.mp4)
+[2](https://youtu.be/ChVgT980Jck)
+
+[Text2Speech](https://youtu.be/I3l4XLZ59iw?t=3m34s)
+
+[aus geparkten Autos auf die politische Haltung schließen](https://www.heise.de/tp/features/KI-Algorithmus-kann-aus-geparkten-Autos-auf-die-politische-Haltung-schliessen-3905914.html)
+
+---
+
+### Vielen Dank für die Aufmerksamkeit
+
+github.com/delaydackel/mlpres
+

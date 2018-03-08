@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>machine learning</title>
+
+		<link rel="stylesheet" href="../../css/reveal.css">
+		<link rel="stylesheet" href="../../css/theme/white.css" id="theme">
+		<link rel="stylesheet" href="../../css/theme/inox.css">
+		
+	</head>
+
+	<body>
+		<div id="hidden" style="">
+			<div class="header">&nbsp;</div>
+			<div class="footer">&nbsp;</div>
+		</div>
+
+		<div class="reveal">
+
+			<div class="slides">
+                <!-- Use external markdown resource, separate slides by three newlines; vertical slides by two newlines -->
+                <section data-markdown="machinelearning.txt" data-separator="^---$" data-separator-notes="^Note:">
+            </div>
+		</div>
+
+		<script src="../../../../lib/js/head.min.js"></script>
+		<script src="../../../../js/reveal.js"></script>
+		<script src="../../../../js/PrintRevealNotes.js"></script>
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<script>
+
+			Reveal.initialize({
+				controls: false,
+				touch: true,
+				progress: true,
+				history: true,
+				center: false,
+				
+				width: 1700,
+				height: "100%",
+math: {
+    mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+    config: 'TeX-AMS_HTML-full' // See http://docs.mathjax.org/en/latest/config-files.html
+  },
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../plugin/notes/notes.js' },
+					{ src: '../../socket.io/socket.io.js', async: true },
+					{
+    src: 'plugin/math/math.js',
+    async: true
+  }
+					//{ src: 'plugin/notes-server/client.js', async: true }
+				]
+			});
+
+		</script>
+
+		<script src="../../js/jquery-3.2.1.min.js"></script>
+		<script src="../../js/inox.js"></script>
+	</body>
+</html>
